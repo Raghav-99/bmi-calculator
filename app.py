@@ -1,6 +1,4 @@
-from tkinter import E
 from flask import Flask, request, render_template
-from decimal import Decimal
 
 app = Flask(__name__)
 @app.route('/', methods = ['GET', 'POST'])
