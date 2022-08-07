@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href="{{url_for('static', filename='style.css')}}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <div>  <!-- *styling <div> itself is different from styling elements under <div> -->
+        <h1 style="text-align: center; color: rgb(194, 114, 17); margin: 20px; padding: 10px;">BMI Calculator</h1>
+        <form method="POST" action="/" name="bmi_cal" id="bmi_cal" class="pure-form form"> <!-- *onkeypress handler is used to make sure the input values are >= 1 
+                                                                                       !don't use event.charCode as its deprecated instead use event.Key to manipulate keyboard inputs -->
+            
+            <div class = "input-field">
+                <input type="number" name="height" placeholder="Height(in cm)" required="true" step="0.01" onkeypress="return ((event.Key >= VK_NUMPAD1 && event.Key <= VK_NUMPAD9) || event.Key == VK_DECIMAL)" min="1"><br>
+            </div>
+
+            <div class="input-field">   <!-- TODO: Handle element overflow -->
+                <input type="number" name="weight" placeholder="Weight(in kg)" required="true" step="0.01" onkeypress="return ((event.Key >= VK_NUMPAD1 && event.Key <= VK_NUMPAD9) || event.Key == VK_DECIMAL)" min="1"><br>
+            </div>
+
+            <div class="input-field">
+                <input type="text" name="result" placeholder="Result(kg/m^2)" value="{{result}}" readonly>
+            </div>
+
+            <div class="submit-custom"> <!-- TODO: Handle element overflow -->
+                <input type="submit" name="calculate" value="Calculate" class="pure-button pure-button-primary">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
